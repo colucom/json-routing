@@ -1,5 +1,5 @@
 {
-  "name": "json-routing",
+  "name": "json-routing-for-osseus",
   "description": "JSON configurable MVC routing for express 4",
   "version": "3.0.0",
   "author": "Giorgio Modoni <modogio@gmail.com>",
@@ -7,10 +7,10 @@
   "main": "./build/json-route.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gimox/json-routing"
+    "url": "https://github.com/colucom/json-routing"
   },
   "bugs": {
-    "url": "https://github.com/gimox/json-routing/issues"
+    "url": "https://github.com/colucom/json-routing/issues"
   },
   "scripts": {
     "test": "npm run test:coverage",

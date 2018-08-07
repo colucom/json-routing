@@ -1,22 +1,7 @@
-JSON Routes
+JSON Routes (for osseus)
 ===================
 
-[![Build Status](https://travis-ci.org/gimox/json-routing.svg?branch=2.0)](https://travis-ci.org/gimox/json-routing)
-[![npm version](https://badge.fury.io/js/json-routing.svg)](https://badge.fury.io/js/json-routing)
-[![Coverage Status](https://coveralls.io/repos/github/gimox/json-routing/badge.svg?branch=2.0)](https://coveralls.io/github/gimox/json-routing?branch=2.0)
-
-
-
-Look at branch [v1.x](https://github.com/gimox/json-routing/tree/1.x) for older release.
-
-- Typescript code, more optimized
-- more speed
-- remove some unused option
-- make code more extensible and simple
-- add automatic JWT route protection with auth0/express-jwt
-- add route validator with express-validator
-- prepare it for something more...... 
-
+Forked [json-routing](https://github.com/gimox/json-routing) and updated to use with [osseus](ttps://github.com/colucom/osseus)
 
 MAKE ME THE CODE
 -------------

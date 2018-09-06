@@ -1,7 +1,7 @@
 {
   "name": "json-routing-for-osseus",
   "description": "JSON configurable MVC routing for express 4",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "author": "Giorgio Modoni <modogio@gmail.com>",
   "homepage": "http://gimox.github.io/json-routing",
   "main": "./build/json-route.js",
@@ -20,7 +20,7 @@
     "live": "nodemon --exec $(npm bin)/ts-node -- ./demo/server.ts",
     "build": "rm -rf ./build && npm run lint && $(npm bin)/tsc -p tsconfig.json",
     "lint": "tslint --config ./tslint.json ./demo/server.ts",
-    "doc": "typedoc --out ./doc ./src/json-routing.ts",
+    "doc": "typedoc --out ./doc ./src/json-route.ts",
     "test:coverage": "nyc  mocha --compilers ts:ts-node/register ./test.ts",
     "test:coverage:check": "nyc check-coverage --lines 75 --functions 75 --branches 75",
     "test:coverage:report": "nyc report",

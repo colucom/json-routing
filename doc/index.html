@@ -64,24 +64,12 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="json-routes">JSON Routes</h1>
-				<p><a href="https://travis-ci.org/gimox/json-routing"><img src="https://travis-ci.org/gimox/json-routing.svg?branch=2.0" alt="Build Status"></a>
-					<a href="https://badge.fury.io/js/json-routing"><img src="https://badge.fury.io/js/json-routing.svg" alt="npm version"></a>
-				<a href="https://coveralls.io/github/gimox/json-routing?branch=2.0"><img src="https://coveralls.io/repos/github/gimox/json-routing/badge.svg?branch=2.0" alt="Coverage Status"></a></p>
-				<p>Look at branch <a href="https://github.com/gimox/json-routing/tree/1.x">v1.x</a> for older release.</p>
-				<ul>
-					<li>Typescript code, more optimized</li>
-					<li>more speed</li>
-					<li>remove some unused option</li>
-					<li>make code more extensible and simple</li>
-					<li>add automatic JWT route protection with auth0/express-jwt</li>
-					<li>add route validator with express-validator</li>
-					<li>prepare it for something more...... </li>
-				</ul>
+				<h1 id="json-routes-for-osseus-">JSON Routes (for osseus)</h1>
+				<p>Forked <a href="https://github.com/gimox/json-routing">json-routing</a> and updated to use with <a href="ttps://github.com/colucom/osseus">osseus</a></p>
 				<h2 id="make-me-the-code">MAKE ME THE CODE</h2>
 				<h4 id="1-init-module">1 init module</h4>
 				<p><strong>Typescript</strong></p>
-				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {JsonRoute} <span class="hljs-keyword">from</span> <span class="hljs-string">"json-routing"</span>;
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> {JsonRoute} <span class="hljs-keyword">from</span> <span class="hljs-string">"json-routing"</span>;
 
 <span class="hljs-keyword">const</span> routeInfo:<span class="hljs-built_in">Array</span>&lt;any&gt; = <span class="hljs-keyword">new</span> JsonRoute(app, {
     <span class="hljs-string">"routesPath"</span>: <span class="hljs-string">"./api/routes"</span>,
@@ -89,16 +77,15 @@
 }).start();
 </code></pre>
 				<p><strong>JS ES6</strong></p>
-				<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> Routing = <span class="hljs-built_in">require</span>(<span class="hljs-string">"json-routing"</span>)
+				<pre><code class="language-javascript"><span class="hljs-keyword">let</span> Routing = <span class="hljs-built_in">require</span>(<span class="hljs-string">"json-routing"</span>)
 
 <span class="hljs-keyword">let</span> routeInfo = <span class="hljs-keyword">new</span> Routing.JsonRoute(app, {
     <span class="hljs-string">"routesPath"</span>: <span class="hljs-string">"./api/routes"</span>,
     <span class="hljs-string">"processdir"</span>: __dirname
-}).start();
-</code></pre>
+}).start();</code></pre>
 				<h4 id="2-create-routes">2 create routes</h4>
 				<p><strong>Create a route file definition</strong></p>
-				<pre><code class="lang-json">{
+				<pre><code class="language-json">{
 <span class="hljs-attr">"/admin"</span>: {
     <span class="hljs-attr">"GET"</span>: {
       <span class="hljs-attr">"route"</span>: <span class="hljs-string">"action"</span>,
@@ -121,17 +108,15 @@
       }
   }
 
-}
-</code></pre>
+}</code></pre>
 				<p>Routig with pure regular expression, add prefix &quot;RE &quot; before uri:</p>
-				<pre><code class="lang-json">{
+				<pre><code class="language-json">{
   <span class="hljs-attr">"RE /.*fly$/"</span>: {
     <span class="hljs-attr">"GET"</span>: {
       <span class="hljs-attr">"route"</span>: <span class="hljs-string">"index"</span>
     }
   }
-}
-</code></pre>
+}</code></pre>
 				<h2 id="what-is-it-">WHAT IS IT?</h2>
 				<p>Make routes much easier to use in MVC format.
 				I&#39;ve been searching for a while for a nodejs routing solution with a:</p>
@@ -166,8 +151,7 @@
 │   │   │   ├── index<span class="hljs-selector-class">.json</span>
 ├── app.js/
 ├── package.json/
-├── README.md/
-</code></pre><ul>
+├── README.md/</code></pre><ul>
 					<li><strong>Controller</strong>: contains the code&#39;s logic</li>
 					<li><strong>Policy</strong>: contains the function called before the controller = middleware</li>
 					<li><strong>Routes</strong>: contains all the <code>*.json</code> routing configuration. You can create as many *.json files as you need. By default, all routes within a file look up the corresponding controller (= modules = controllers = middleware) inside the controller&#39;s default directory <code>./controller</code> (or within the directory specified by the user), which uses the following naming format: Route-name (without .json) + &quot;Controller.js (the first letter must be capitalized)&quot;.</li>
@@ -176,6 +160,8 @@
 					<p><strong>EXAMPLE:</strong>
 						If you have a definition file called <code>users.json</code>, by default the route searches the controller <code>UsersControllers.js</code>.
 					For routes <em>auth.json</em> all routes call the controller <code>AuthController.js</code> ecc.. ecc..</p>
+				</blockquote>
+				<blockquote>
 					<p><strong>NOTE:</strong>  this is a proposed structure but you can configure the module for your structure, you can change dir structure or add all routes in a single file.</p>
 				</blockquote>
 				<h3 id="creating-json-configuration-file">Creating JSON Configuration file</h3>
@@ -183,7 +169,7 @@
 				<p>Router is created using this syntax:</p>
 				<p><code>{ &quot;RoutePath&quot; : {&quot;verb&quot;: {options} } }</code></p>
 				<p><em>Example of extended config</em></p>
-				<pre><code class="lang-javascript">{
+				<pre><code class="language-javascript">{
    <span class="hljs-string">"routePath"</span>: {
     <span class="hljs-string">"VERB"</span>: {
       <span class="hljs-string">"route"</span>: <span class="hljs-string">"controller:method"</span>,
@@ -215,13 +201,12 @@
 
  ...
   more routes
-}
-</code></pre>
+}</code></pre>
 				<h3 id="routepath">RoutePath</h3>
 				<p>This is the routing path and it follows the express4 standard routing. You can use jolly character and other type syntax <code>/admin*,</code> <code>/admin/:name</code> etc. etc.;</p>
 				<h3 id="verb">Verb</h3>
 				<p>Relates to the call verb and can assume any valid http verbs like GET, POST, PUT, DELETE etc etc. You can add more verbs for a single routePath:</p>
-				<pre><code class="lang-javascript">{
+				<pre><code class="language-javascript">{
 <span class="hljs-string">"/admin"</span>: {
     <span class="hljs-string">"GET"</span>: {
       <span class="hljs-string">"route"</span>: <span class="hljs-string">"action"</span>,
@@ -238,8 +223,7 @@
       ]
     }
 
-}
-</code></pre>
+}</code></pre>
 				<p><code>/admin</code> has GET and POST  verbs.</p>
 				<h3 id="route">Route</h3>
 				<p>Relates to <code>file:method</code> to call a route address.</p>
@@ -265,7 +249,7 @@
 				<p>Enable or disable Cross-origin resource sharing. default is true, look at global options for more info.</p>
 				<h3 id="regex">Regex</h3>
 				<p>You can set a regex to validate your route, however I discourage using it. Instead, I prefer to add this logic in the controller for better code speed. <strong>To set a rexeg route, use the prefix &quot;RE &quot; before pattern.</strong>. </p>
-				<pre><code class="lang-javascript">{
+				<pre><code class="language-javascript">{
 <span class="hljs-string">"RE /.*fly$/"</span>: {
     <span class="hljs-string">"GET"</span>: {
       <span class="hljs-string">"route"</span>: <span class="hljs-string">"action"</span>,
@@ -275,15 +259,13 @@
         <span class="hljs-string">"./subfolder/test2:index"</span>
       ]
     }
-}
-</code></pre>
+}</code></pre>
 				<h3 id="init-module">Init Module</h3>
 				<p>Configure the routing modules in your main js file, as any other nodes modules.</p>
-				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> routes = <span class="hljs-built_in">require</span>(<span class="hljs-string">'json-routing'</span>);
-<span class="hljs-keyword">new</span> routes.JsonRoute(expressApp, options).start();
-</code></pre>
+				<pre><code class="language-javascript"><span class="hljs-keyword">var</span> routes = <span class="hljs-built_in">require</span>(<span class="hljs-string">'json-routing'</span>);
+<span class="hljs-keyword">new</span> routes.JsonRoute(expressApp, options).start();</code></pre>
 				<p>Example:  </p>
-				<pre><code class="lang-javascript"><span class="hljs-comment">// Includes</span>
+				<pre><code class="language-javascript"><span class="hljs-comment">// Includes</span>
 <span class="hljs-keyword">var</span> express     = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);
 <span class="hljs-keyword">var</span> app         = express();
 <span class="hljs-keyword">var</span> routes      = <span class="hljs-built_in">require</span>(<span class="hljs-string">'json-routing'</span>); <span class="hljs-comment">// add module</span>
@@ -304,7 +286,7 @@ app.use(...);
 				<p>When you initialize the module, you can specify a few options to customize the directory structure.
 				All are listed below with the default values.  An explanation follows.</p>
 				<p>your main.js file. </p>
-				<pre><code class="lang-javascript"><span class="hljs-comment">// Includes</span>
+				<pre><code class="language-javascript"><span class="hljs-comment">// Includes</span>
 <span class="hljs-keyword">var</span> express     = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);
 <span class="hljs-keyword">var</span> app         = express();
 <span class="hljs-keyword">var</span> Routes      = <span class="hljs-built_in">require</span>(<span class="hljs-string">'json-routing'</span>); <span class="hljs-comment">// add module</span>
@@ -315,18 +297,18 @@ app.use(...);
 
 <span class="hljs-comment">//define routes default options</span>
 <span class="hljs-keyword">var</span> routeOptions = {
-    <span class="hljs-attr">routesPath</span>      : <span class="hljs-string">"./api/routes"</span>,
-    <span class="hljs-attr">controllerPath</span>  : <span class="hljs-string">"./api/controllers"</span>,
-    <span class="hljs-attr">policyPath</span>      : <span class="hljs-string">"./api/policy"</span>,
-    <span class="hljs-attr">cors</span>            : <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">displayRoute</span>    : <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">defaultAction</span>   : <span class="hljs-string">"index"</span>,
-    <span class="hljs-attr">processDir</span>        : process.cwd()
+    <span class="hljs-attr">routesPath</span>                  : <span class="hljs-string">"./api/routes"</span>,
+    <span class="hljs-attr">controllerPath</span>              : <span class="hljs-string">"./api/controllers"</span>,
+    <span class="hljs-attr">policyPath</span>                  : <span class="hljs-string">"./api/policy"</span>,
+    <span class="hljs-attr">cors</span>                        : <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">displayRoute</span>                : <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">defaultAction</span>               : <span class="hljs-string">"index"</span>,
+    <span class="hljs-attr">processDir</span>                    : process.cwd(),
+    <span class="hljs-attr">controllerNameNoUppercase</span>    : <span class="hljs-literal">true</span>
 }
 
 <span class="hljs-comment">//init routes</span>
-<span class="hljs-keyword">var</span> routeInfo = <span class="hljs-keyword">new</span> Routes.JsonRoute(app, routeOptions);
-</code></pre>
+<span class="hljs-keyword">var</span> routeInfo = <span class="hljs-keyword">new</span> Routes.JsonRoute(app, routeOptions);</code></pre>
 				<ul>
 					<li>routesPath      : the path to your routes folder. <code>Default ./routes</code></li>
 					<li>controllerPath  : the path to your controller folder. <code>Default ./controllers</code></li>
@@ -335,12 +317,13 @@ app.use(...);
 					<li>displayRoute    : display in console loading route info, <code>default true</code>.</li>
 					<li>defaultAction   : the function called in route if not specified. It&#39;s not so useful, but it&#39;s here!.<code>Default index</code></li>
 					<li>processDir          : The root base path of the project, default <code>process.cwd()</code> set as <code>__dirname</code> if you need to start in a subfolder or complex project.</li>
+					<li>controllerNameNoUppercase: option for controller names to not begin with uppercase. <code>Default false</code></li>
 				</ul>
 				<p>If you omit routeOptions or some params it use defaults values.</p>
 				<h2 id="change-json-file-global-options">Change json file Global Options</h2>
 				<p>If you need to change options for all routes only for a specific *.json file, you can set in your file the key <code>GLOBAL</code> as in the following example:</p>
 				<p>user.json</p>
-				<pre><code class="lang-javascript">{
+				<pre><code class="language-javascript">{
   <span class="hljs-string">"GLOBAL"</span>: {
     <span class="hljs-string">"controller"</span>: <span class="hljs-string">"./customdir/customControllerName"</span>,
     <span class="hljs-string">"policy"</span>:[<span class="hljs-string">"config:setall"</span>,<span class="hljs-string">"config:connection"</span>],
@@ -356,8 +339,7 @@ app.use(...);
     }
   }
 
-}
-</code></pre>
+}</code></pre>
 				<p>Example: route controller is ./customdir/UserController.js</p>
 				<ul>
 					<li>controller: set a custom controller path for all routing file</li>
@@ -369,7 +351,7 @@ app.use(...);
 				</blockquote>
 				<h2 id="full-extended-example">Full extended example</h2>
 				<p><em>app.js</em></p>
-				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>)
+				<pre><code class="language-javascript"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>)
     , app = express()
     , port = process.env.PORT || <span class="hljs-number">3000</span>
     , routing = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./lib/route'</span>);
@@ -409,11 +391,10 @@ app.use(<span class="hljs-string">'/'</span>, router);
  */</span>
 <span class="hljs-keyword">var</span> server = app.listen(port, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Listening on port %d'</span>, server.address().port);
-});
-</code></pre>
+});</code></pre>
 				<p>This is the main file, we set routing and add global setting to use ./api as root directory</p>
 				<p><em>./api/routes/users.json</em></p>
-				<pre><code class="lang-javascript">{
+				<pre><code class="language-javascript">{
    <span class="hljs-string">"/banned"</span>: {
     <span class="hljs-string">"GET"</span>: {
       <span class="hljs-string">"route"</span>: <span class="hljs-string">"./lib/bannedCustom:index"</span>,
@@ -435,56 +416,50 @@ app.use(<span class="hljs-string">'/'</span>, router);
     }
   }
 
-}
-</code></pre>
+}</code></pre>
 				<p>define the routes</p>
 				<p><em>./api/controllers/UsersController.js</em></p>
-				<pre><code class="lang-javascript">exports.index = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res,next</span>) </span>{
+				<pre><code class="language-javascript">exports.index = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res,next</span>) </span>{
     res.send(<span class="hljs-string">' index routes '</span>);
 };
 
 exports.create = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res,next</span>) </span>{
     res.send(<span class="hljs-string">' create routes params:'</span>+req.params.name);
-};
-</code></pre>
+};</code></pre>
 				<p>a basic controller logic</p>
 				<p><em>./api/controllers/bannedCustom.js</em></p>
-				<pre><code class="lang-javascript">exports.getbanned = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res,next</span>) </span>{
+				<pre><code class="language-javascript">exports.getbanned = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res,next</span>) </span>{
     res.send(<span class="hljs-string">' custom controller name '</span>);
-};
-</code></pre>
+};</code></pre>
 				<p>this is the controller with custom name</p>
 				<p><em>./api/policy/auth.js</em></p>
-				<pre><code class="lang-javascript">exports.check = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res,next</span>) </span>{
+				<pre><code class="language-javascript">exports.check = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res,next</span>) </span>{
     <span class="hljs-keyword">if</span> (!req.session.isLogged){
          <span class="hljs-keyword">return</span>  res.redirect(<span class="hljs-string">'http://'</span>+req.hostname+<span class="hljs-string">":3000/403"</span>);
     }
     next();
-};
-</code></pre>
+};</code></pre>
 				<p>Let me explain this policy: it checks if a user is logged, else set a redirect, so we can use the middleware to check ACL, authorization or get/set global vars, and this is very useful.</p>
 				<h2 id="create-a-policy-file-and-pass-vars-to-controller">Create a Policy File and Pass vars to controller</h2>
 				<p>We encourage to use standard tecnique for best performance: use middleware.
 				using the full example described below we can create a standard policy file to attach a global var using <code>req</code></p>
 				<p><em>./api/policy/auth.js</em></p>
-				<pre><code class="lang-javascript">exports.getbanned = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res,next</span>) </span>{
+				<pre><code class="language-javascript">exports.getbanned = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res,next</span>) </span>{
     <span class="hljs-keyword">if</span> (!req.session.isLogged){
          <span class="hljs-keyword">return</span>  res.redirect(<span class="hljs-string">'http://'</span>+req.hostname+<span class="hljs-string">":3000/403"</span>);
     }
     <span class="hljs-comment">//use req</span>
     req.session.lastPing = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
     next();
-};
-</code></pre>
+};</code></pre>
 				<p><strong>Read the value in the controller or policy</strong></p>
 				<p><em>./api/controllers/bannedCustom.js</em></p>
-				<pre><code class="lang-javascript">exports.getbanned = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res,next</span>) </span>{
+				<pre><code class="language-javascript">exports.getbanned = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res,next</span>) </span>{
     res.send(<span class="hljs-string">' custom controller name, middleware loaded at: '</span>+req.session.lastPing);
-};
-</code></pre>
+};</code></pre>
 				<h2 id="case-using-middleware">Case: using middleware</h2>
 				<p>A special case: if we want to add an authentication before some route, take a look at this example:</p>
-				<pre><code class="lang-javascript">{
+				<pre><code class="language-javascript">{
 
  <span class="hljs-string">"/admin"</span>: {
     <span class="hljs-string">"GET"</span>: {
@@ -492,12 +467,11 @@ exports.create = <span class="hljs-function"><span class="hljs-keyword">function
        <span class="hljs-string">"policy"</span>:[<span class="hljs-string">"auth:check"</span>]
      }
   }
-}}
-</code></pre>
+}}</code></pre>
 				<p>All <code>/dadmin</code> route calls the controller <code>auth</code>, so now <code>auth:check</code> is executed before all <code>index</code> function and it becomes
 				a policy (=middleware) and for a clear structure i put the file in policy dir.</p>
 				<p>An alternative example use the global file option, all routes inside use &quot;auth:check&quot; middleware:</p>
-				<pre><code class="lang-javascript">{
+				<pre><code class="language-javascript">{
  <span class="hljs-string">"GLOBAL"</span>: {
     <span class="hljs-string">"policy"</span>:[<span class="hljs-string">"auth:check"</span>],
     <span class="hljs-string">"baseUrl"</span>:<span class="hljs-string">"/admin"</span>
@@ -517,8 +491,7 @@ exports.create = <span class="hljs-function"><span class="hljs-keyword">function
     }
   }
 
-}}
-</code></pre>
+}}</code></pre>
 				<h2 id="protected-route-with-jwt">Protected route with JWT</h2>
 				<p>You can protect a routes using <a href="https://jwt.io/">jwt</a>. Json-routing use <a href="https://github.com/auth0/express-jwt">auth0/express-jwt</a>.
 				To protect a route add a property <code>jwt:true</code> and set the global options for jwt as example.</p>
@@ -613,7 +586,7 @@ app.use((<span class="hljs-built_in">err</span>: any, req: express.<span class="
 }
 </code></pre><p><strong>NB body-parser middleware is injected by json-routing, you can pass params in global params</strong></p>
 				<h2 id="all-options">ALL OPTIONS</h2>
-				<pre><code class="lang-javascript"><span class="hljs-keyword">export</span> interface IOptions {
+				<pre><code class="language-javascript"><span class="hljs-keyword">export</span> interface IOptions {
     routesPath?: string
     , controllersPath?: string
     , policyPath?: string
@@ -626,6 +599,7 @@ app.use((<span class="hljs-built_in">err</span>: any, req: express.<span class="
         <span class="hljs-attr">secret</span>: any
     }
     , bodyParserUrlEncoded?: any
+    , controllerNameNoUppercase?: boolean
 }
 
 ... 
@@ -650,37 +624,43 @@ let options: IOptions;
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_interfaces_icontrollerglobal_.html">"interfaces/IController<wbr>Global"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_interfaces_ihandler_.html">"interfaces/IHandler"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_interfaces_ijsonroute_.html">"interfaces/IJson<wbr>Route"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_interfaces_ioptions_.html">"interfaces/IOptions"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_interfaces_irouteinfo_.html">"interfaces/IRoute<wbr>Info"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_jroute_handler_.html">"jroute-<wbr>handler"</a>
+					<li class="label tsd-is-external">
+						<span>Internals</span>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_json_route_.html">"json-<wbr>route"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="label tsd-is-external">
+						<span>Externals</span>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_interfaces_icontrollerglobal_.html">"interfaces/IController<wbr>Global"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_interfaces_ihandler_.html">"interfaces/IHandler"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_interfaces_ijsonroute_.html">"interfaces/IJson<wbr>Route"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_interfaces_ioptions_.html">"interfaces/IOptions"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_interfaces_irouteinfo_.html">"interfaces/IRoute<wbr>Info"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_jroute_handler_.html">"jroute-<wbr>handler"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="modules/_route_controller_.html">"route-<wbr>controller"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="modules/_route_middleware_.html">"route-<wbr>middleware"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="modules/_route_validator_.html">"route-<wbr>validator"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="modules/_routes_display_.html">"routes-<wbr>display"</a>
 					</li>
 				</ul>

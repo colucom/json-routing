@@ -8,6 +8,9 @@ class RouteController {
         this.osseus = osseus;
     }
     _getName(name) {
+        if (this.options.controllerNameNoUppercase) {
+            return name + "Controller";
+        }
         return name.charAt(0).toUpperCase() + name.slice(1) + "Controller";
     }
     _parse(controller, routeParams) {
@@ -34,6 +37,12 @@ class RouteController {
             basePath = path.join(this.options.processdir, route[0]);
             ctrlNamePath = "";
             ctrlName = route[0];
+        }
+        else if (route[0] !== ctrlName) {
+            let otherController = this._getName(route[0]);
+            basePath = path.join(this.options.controllersPath, otherController);
+            ctrlNamePath = "";
+            ctrlName = otherController;
         }
         else if (globalController) {
             basePath = path.join(this.options.processdir, globalController);

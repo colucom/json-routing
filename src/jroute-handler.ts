@@ -72,8 +72,8 @@ export class JrouteHandler {
         try {
             return require(this.route.path);
         } catch (ex) {
-            console.log("\x1b[31m *** ROUTING FILE DEFINITION ERROR :" + this.route.path + "\x1b[0m");
-            console.log("\x1b[31m All routes inside this file are not loaded, please check json syntax!\x1b[0m");
+            console.error("\x1b[31m *** ROUTING FILE DEFINITION ERROR :" + this.route.path + "\x1b[0m");
+            console.error("\x1b[31m All routes inside this file are not loaded, please check json syntax!\x1b[0m");
             return true;
         }
     }

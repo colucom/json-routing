@@ -327,13 +327,14 @@ app.use(...);
 
 //define routes default options
 var routeOptions = {
-    routesPath      : "./api/routes",
-    controllerPath  : "./api/controllers",
-    policyPath      : "./api/policy",
-    cors            : true,
-    displayRoute    : true,
-    defaultAction   : "index",
-    processDir		: process.cwd()
+    routesPath      			: "./api/routes",
+    controllerPath  			: "./api/controllers",
+    policyPath      			: "./api/policy",
+    cors            			: true,
+    displayRoute    			: true,
+    defaultAction   			: "index",
+    processDir					: process.cwd(),
+    controllerNameNoUppercase	: true
 }
 
 //init routes
@@ -347,6 +348,7 @@ var routeInfo = new Routes.JsonRoute(app, routeOptions);
 -  displayRoute    : display in console loading route info, `default true`.
 -  defaultAction   : the function called in route if not specified. It's not so useful, but it's here!.`Default index`
 -  processDir		  : The root base path of the project, default `process.cwd()` set as `__dirname` if you need to start in a subfolder or complex project.
+-  controllerNameNoUppercase: option for controller names to not begin with uppercase. `Default false`
 
 If you omit routeOptions or some params it use defaults values.
 
@@ -722,6 +724,7 @@ export interface IOptions {
         secret: any
     }
     , bodyParserUrlEncoded?: any
+    , controllerNameNoUppercase?: boolean
 }
 
 ... 

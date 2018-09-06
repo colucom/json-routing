@@ -21,13 +21,13 @@ class RouteMiddleware {
                 mdlwFnc.unshift(jwt(this.options.jwt));
             }
             catch (e) {
-                console.log("\x1b[31m");
-                console.log("************************************ WARNING!!!! ******************************************");
-                console.log("*                                                                                         *");
-                console.log("* JWT ROUTE NOT LOADED: PLEASE ADD express-jwt module: npm install --save express-jwt     *");
-                console.log("*                                                                                         *");
-                console.log("*******************************************************************************************");
-                console.log("\x1b[0m");
+                console.error("\x1b[31m");
+                console.error("************************************ WARNING!!!! ******************************************");
+                console.error("*                                                                                         *");
+                console.error("* JWT ROUTE NOT LOADED: PLEASE ADD express-jwt module: npm install --save express-jwt     *");
+                console.error("*                                                                                         *");
+                console.error("*******************************************************************************************");
+                console.error("\x1b[0m");
             }
         }
         if (validators.body || validators.params || validators.query) {
